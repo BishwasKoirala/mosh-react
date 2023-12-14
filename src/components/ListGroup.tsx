@@ -9,25 +9,27 @@ function ListGroup() {
     'Londaon',
   ]
 
-  items = []
+  // items = []
+
+  const handleClick  = (event : MouseEvent) => console.log(event)
+  
 
   const message = items.length === 0 ? 
   <p>Not items found</p> : null
-
-
-  const getmessage = () => {
-    return items.length === 0 ?
-      <p>No items Found</p>
-      : null //else null
-  }
-
   return (
   <>
   <h1>List</h1>
-  { getmessage }
+  {items.length === 0 &&
+    <p>No Items Found</p> }
   <ul className="list-group">
-    { items.map( item =>
-      <li key={item}>{item}</li> ) }
+    { items.map( (item , index)=>
+      <li 
+        className="list-group-item" 
+        key={item}
+        onClick={handleClick}
+      >
+        {item}
+      </li> ) }
   </ul>
   </>
   )
