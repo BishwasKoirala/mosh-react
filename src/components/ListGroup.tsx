@@ -11,7 +11,7 @@ function ListGroup() {
 
   // items = []
 
-  const handleClick  = (event : MouseEvent) => console.log(event)
+  const handleClick  = (event : React.MouseEvent<HTMLElement>) => console.log(event)
   
 
   const message = items.length === 0 ? 
@@ -26,6 +26,7 @@ function ListGroup() {
       <li 
         className="list-group-item" 
         key={item}
+        //pass the function, dont call it
         onClick={handleClick}
       >
         {item}
