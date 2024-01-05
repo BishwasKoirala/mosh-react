@@ -3,9 +3,10 @@ import { useState } from "react"
 interface Props {
   items : string[];
   heading : string;
+  onSelectItem : (item : string) => void
 }
 
-function ListGroup({items , heading} : Props) {
+function ListGroup({items , heading , onSelectItem} : Props) {
   
   //This is called react Hooks
   const [selectedIndex , setSelectedIndex] =  useState(-1)
@@ -25,7 +26,10 @@ function ListGroup({items , heading} : Props) {
           key={item}
           //pass the function, dont call it
           // onClick={() => { setSelectedIndex(index)}}
-          onClick={()=>setSelectedIndex(index) }
+          onClick={()=>{
+            setSelectedIndex(index);
+            onSelectItem(item);
+          } }
         >
           {item}
         </li> ) }
