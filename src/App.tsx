@@ -1,35 +1,28 @@
-import { useState } from "react";
-import Message from "./components/Message";
+import React, { useState } from "react";
 
-export default function App () {
-  // const [firstName , setFirstName] = useState('');
-  // const [lastName , setLastName] = useState('');
-  const [customer , setCustomer] = useState(
-    {
-      name : 'John' , 
-      address : {
-        city : 'Yokohama' ,
-        zip : 2440805
-      }
-    }
-  )
+const App = () => {
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product1", quantity: 1 },
+      { id: 2, title: "Product2", quantity: 1 },
+      
+  ],
+  });
 
   const handleClick = () => {
-    setCustomer({
-      // ..means all existing objects
+    setCart({
+      ...cart,
+      items: cart.items.map((item) =>
+        item.quantity === 1 ? { ...item, quantity: 2 } : item
+      ),
+    });
+  };
 
-      ...customer,
-      address : {
-        ...customer.address,
-        zip : 21111
-      }
-    })
-  }
+  return <div>
+    <button onClick={handleClick}>click</button>
+    {cart.items.map(item => <p key={item.id}>{item.quantity}</p>)}
+  </div>;
+};
 
-  return (
-    <div>
-      <button onClick={handleClick} >click</button>
-      <p>{customer.name}</p>  
-    </div>
-  );
-}
+export default App;

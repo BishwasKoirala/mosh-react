@@ -1,1 +1,0 @@
- next :: inspection components with react dev tools
