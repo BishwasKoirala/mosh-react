@@ -1,4 +1,2 @@
- next :: inspection components with react dev tools
 
  do ex of : Managing Component State
- 
