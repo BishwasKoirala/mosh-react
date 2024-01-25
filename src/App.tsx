@@ -1,9 +1,12 @@
 import React from 'react'
 import ExpandableText from './components/ExpandableText'
+import Form from './components/Form'
 
 const App = () => {
   return (
-    <ExpandableText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, culpa. Ullam numquam itaque, blanditiis nemo nostrum fuga. Vel, velit, hic, itaque blanditiis quo repellendus quos libero illo facere quibusdam incidunt.lorem</ExpandableText>
+    <div>
+      <Form />
+    </div>
   )
 }
 
