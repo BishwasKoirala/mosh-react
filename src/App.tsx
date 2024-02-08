@@ -3,6 +3,9 @@ import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Form";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+import ExpenseForm from "./expense-tracker/components/Expense-Form";
+
+export const categories = ["Groceries", "Utilities", "Entertainment"];
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -25,6 +28,9 @@ const App = () => {
   if (expenses.length > 0)
     return (
       <div>
+        <div className="mb-5">
+          <ExpenseForm />
+        </div>
         <div className="mb-3">
           <ExpenseFilter
             onSelectCategory={(category) => setSelectedCategory(category)}
