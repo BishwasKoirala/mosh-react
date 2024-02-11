@@ -8,8 +8,10 @@ const ProductList = ({ category }: { category: string }) => {
     console.log("fetching products in ", category);
     setProducts(["clothing", "HouseHolds"]);
   }, [category]);
-  // re renders if the category changes 
-
+  // re renders if the given value i.e cvategory changes
+  
+// this will enter 無限ループ  
+  // }, [category]);
   return <div>ProductList</div>;
 };
 
