@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "./services/api-client";
-
-interface User {
-  id: number;
-  name: string;
-}
+import userService, { User } from "./services/user-servive";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -12,14 +8,11 @@ const App = () => {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController();
     setLoading(true);
 
-    apiClient
-      .get<User[]>("/users", {
-        signal: controller.signal,
-      })
-      .then((res) => {
+    const {request , cancel} = userService
+      .getAllUsers()
+      request.then((res) => {
         console.log(res.data);
         setUsers(res.data);
         setLoading(false);
@@ -29,7 +22,7 @@ const App = () => {
         setError(anError.message);
         setLoading(false);
       });
-    return () => controller.abort();
+    return () => cancel()
   }, []);
 
   const deleteUser = (user: User) => {
